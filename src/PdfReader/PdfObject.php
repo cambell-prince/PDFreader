@@ -217,7 +217,7 @@ class PdfObject extends PdfBase
             echo "Entered decodeText<br />\n";
         }
         if ($this->debugLevel > self::DEBUG_HIDE_DECODING) {
-            echo "<strong>Original String:</strong> $this->stream<br />\n";
+//             echo "<strong>Original String:</strong> $this->stream<br />\n";
         }
 
         $rawString = $this->stream;

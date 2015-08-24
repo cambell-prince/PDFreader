@@ -31,8 +31,8 @@ class PdfBaseTest extends PHPUnit_Framework_TestCase
 		$base = new PdfBaseConcrete();
 		$result = $base->extractArray($array);
 		$this->assertEquals(2, count($result));
-		$this->assertEquals(9223372036854775807, $result[0]);
-		$this->assertEquals(9223372036854775807, $result[1]);
+		$this->assertEquals(0x2a0e03c0a0a3c0918938e0cf646a2678, $result[0]);
+		$this->assertEquals(0x2a0e03c0a0a3c0918938e0cf646a2678, $result[1]);
 	}
 	
 	/*
