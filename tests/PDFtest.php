@@ -37,6 +37,8 @@ try {
 		$PDF->open('TestPDFs/DIRECT_DISH_09142010.pdf');
 	else if ($_GET['page'] == 8)
 		$PDF->open('TestPDFs/encrypted.pdf');
+	else if ($_GET['page'] == 9)
+		$PDF->open('TestPDFs/encrypted_AES2.pdf');
 	else
 		$PDF->open('TestPDFs/pdf_that_does_not_work.pdf');
 		

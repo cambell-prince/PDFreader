@@ -329,7 +329,7 @@ class PdfReader extends PdfBase
         }
         $decrypter = null;
         if ($encrypt) {
-        	$decrypter = new PDFdecrypter($encrypt, $id);
+        	$decrypter = new PdfDecrypter($encrypt, $id);
         }
         
         /*
@@ -348,6 +348,9 @@ class PdfReader extends PdfBase
             echo "<br />\n";
         }
 
+        if ($this->debugLevel > self::DEBUG_HIDE_STRUCTURE) {
+            echo "Finished extractStructure<br />\n";
+        }
         return;
     }//End extractStructure
 

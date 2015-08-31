@@ -282,6 +282,7 @@ class PdfDecoder extends PdfBase
         if ($this->debugLevel > self::DEBUG_HIDE_DECODING) {
             echo "<strong>Working token ($stringType): </strong>";
             echo "$workingString<br />\n";
+            var_dump($token);
         }
 
         //Determine which font this token uses
@@ -345,7 +346,7 @@ class PdfDecoder extends PdfBase
         }
         //Otherwise, use the last-used CMap, which should already be set
 
-        if ($this->debugLevel > self::DEBUG_HIDE_DECODING) {
+        if (false && $this->debugLevel > self::DEBUG_HIDE_DECODING) {
             echo '<strong>Cmap: </strong>';
             var_dump($this->CMap);
             echo "<br />\n";

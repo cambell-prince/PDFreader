@@ -1,0 +1,24 @@
+{
+  "name": "PDFreader",
+  "version": "0.1.0",
+  "description": "PDF Reader",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cambell-prince/PDFreader.git"
+  },
+  "author": "",
+  "license": "GPL V3",
+  "devDependencies": {
+    "gulp-util": "~3.0.0",
+    "gulp": "~3.8.0",
+    "gulp-exec": "~2.1.0",
+    "gulp-livereload": "~3.8.0",
+    "tiny-lr": "~0.1.6",
+    "lodash.template": "~3.6.0",
+    "gulp-sequence": "~0.4.0"
+  }
+}

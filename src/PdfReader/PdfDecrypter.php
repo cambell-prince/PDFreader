@@ -61,7 +61,7 @@ class PdfDecrypter
 		
 		var_dump('key ', bin2hex($hash), ' ', bin2hex($this->_key));
 		
-// 		var_dump(mcrypt_module_self_test(MCRYPT_ARCFOUR));
+        var_dump(\mcrypt_module_self_test(MCRYPT_ARCFOUR));
 		
 		return $this->_key;
 	}
@@ -81,7 +81,7 @@ class PdfDecrypter
 		$key = substr($key, 0, 10);
 		
  		$decryptedString = @mcrypt_decrypt(MCRYPT_ARCFOUR, $key, $rawString, MCRYPT_MODE_STREAM, 0);
-				return $decryptedString;
+		return $decryptedString;
 	}
 	
 }

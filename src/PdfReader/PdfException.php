@@ -25,7 +25,7 @@ namespace PdfReader;
  * @version   Release: 0.1.6
  * @link      http://heartofthefyre.us/PDFreader/index.php
  */
-class PdfException extends Exception
+class PdfException extends \Exception
 {
     /*************
     * PROPERTIES *

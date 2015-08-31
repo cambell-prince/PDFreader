@@ -136,6 +136,9 @@ class PdfBase
         $buffer = substr($buffer, 0, strpos($buffer, 'endobj'));
         $buffer = ltrim($buffer);
 
+        if ($this->debugLevel > self::DEBUG_HIDE_EXTRACTION) {
+            echo 'Finished extractObject';
+        }
         return $buffer;
     }//End extractObject
 
@@ -449,7 +452,6 @@ class PdfBase
         $stream = array();
 
         $streamObj = $this->extractObject($reference);
-        var_dump('extracting stream ', $objectNumber, $generationNumber);
         $this->iterations = 0; //Reset iterations for extractDictionary call
         $stream['Dictionary'] = $this->extractDictionary($streamObj);
 
@@ -464,8 +466,12 @@ class PdfBase
         } else if (isset($stream['Dictionary']['Length'])) {
             $buffer = substr($buffer, 0, $stream['Dictionary']['Length']);
         }
-        $stream['Contents'] = $this->PdfDecoder->decrypt($objectNumber, $generationNumber, $buffer);
+        $result = $this->PdfDecoder->decrypt($objectNumber, $generationNumber, $buffer);
+        $stream['Contents'] = $result; 
 
+        if ($this->debugLevel > self::DEBUG_HIDE_EXTRACTION) {
+            echo "Finished extractStream<br />\n";
+        }
         return $stream;
     }//End extractStream
 

@@ -97,6 +97,9 @@ class PdfObject extends PdfBase
         $this->parseStreamDictionary($stream['Dictionary']);
         $this->stream = $stream['Contents'];
         $this->decodeText();
+        if ($this->debugLevel > self::DEBUG_OFF) {
+            echo "Finished content stream $reference<br />\n";
+        }
     }//End __construct
 
 
