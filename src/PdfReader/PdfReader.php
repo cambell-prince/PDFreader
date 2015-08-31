@@ -280,7 +280,7 @@ class PdfReader extends PdfBase
     protected function extractStructure()
     {
         if ($this->debugLevel > self::DEBUG_HIDE_STRUCTURE) {
-            echo "Entered extractStructure<br />\n";
+            echo "<b>Entered extractStructure</b><br />\n";
         }
 
         //XREF TABLES AND TRAILERS
@@ -308,9 +308,6 @@ class PdfReader extends PdfBase
 				// TODO Review: Should extractDictionary extract objects within also? CP
 	        	$encrypt['O'] = $this->extractString($encrypt['O']);
 	        	$encrypt['U'] = $this->extractString($encrypt['U']);
-	        	if ($encrypt['Filter'] != '/Standard' || $encrypt['R'] != '2' || $encrypt['V'] != '1') {
-		            throw new PdfException('Unsupported encrypted file detected.');
-	        	}
             }
         	if (isset($trailer['ID'])) {
         		$id = $trailer['ID'];
@@ -327,6 +324,9 @@ class PdfReader extends PdfBase
             var_dump($id);
             echo "<br />\n";
         }
+       	//if ($encrypt['Filter'] != '/Standard' || $encrypt['R'] != '2' || $encrypt['V'] != '1') {
+        //    throw new PdfException('Unsupported encrypted file detected.');
+       	//}
         $decrypter = null;
         if ($encrypt) {
         	$decrypter = new PdfDecrypter($encrypt, $id);
@@ -349,7 +349,7 @@ class PdfReader extends PdfBase
         }
 
         if ($this->debugLevel > self::DEBUG_HIDE_STRUCTURE) {
-            echo "Finished extractStructure<br />\n";
+            echo "<b>Finished extractStructure</b><br />\n";
         }
         return;
     }//End extractStructure

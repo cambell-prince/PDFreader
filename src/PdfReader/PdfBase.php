@@ -462,6 +462,8 @@ class PdfBase
             && preg_match(self::REF_PATTERN, $stream['Dictionary']['Length'])
         ) { //If Length is a reference, extract the actual value
             $length = $this->extractObject($stream['Dictionary']['Length']);
+            $length = trim($length);
+            var_dump($length);
             $buffer = substr($buffer, 0, $length);
         } else if (isset($stream['Dictionary']['Length'])) {
             $buffer = substr($buffer, 0, $stream['Dictionary']['Length']);

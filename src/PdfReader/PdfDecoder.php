@@ -567,26 +567,12 @@ class PdfDecoder extends PdfBase
             echo "Entered inflate<br />\n";
         }
 
-        if (function_exists('gzinflate')) {
-            $data = substr($data, 2);
-            // dunno why this works; got it to through trial and error
-            $data[0] = chr(ord($data[0]) | 0x01);
-            $deflated = gzinflate($data);
-            return $deflated;
-        } else if (is_executable('gzip')) {
-            // don't know what the CRC is; gzip will spit out an error
-            $header = "\x1F\x8B\x08\x00\x00\x00\x00\x00\x00\x00";
-            $file = fopen('.tmp.gz', 'wb');
-            if (!$file) {
-                throw new PdfException('Error writing temporary zip file.');
-            }
-            fwrite($file, $header);
-            fwrite($file, substr($data, 2));
-            fclose($file);
-            return `gzip -cdq .tmp.gz`;
-        } else {
-            throw new PdfException('Extraction error: Can\'t unzip your file.');
-        }
+ 		// initialize string to return
+		$decoded = gzuncompress($data);
+		if ($decoded === false) {
+            throw new PdfException('Filter Error: inflate bad data.');
+		}
+		return $decoded;
     }//End inflate
 
     /**

@@ -80,7 +80,11 @@ class PdfDecrypter
 		$key = md5($key, true);
 		$key = substr($key, 0, 10);
 		
- 		$decryptedString = @mcrypt_decrypt(MCRYPT_ARCFOUR, $key, $rawString, MCRYPT_MODE_STREAM, 0);
+ 		//$decryptedString = @mcrypt_decrypt(MCRYPT_ARCFOUR, $key, $rawString, MCRYPT_MODE_STREAM, 0);
+ 		$decryptedString = @mcrypt_decrypt(MCRYPT_AES128, $key, $rawString, MCRYPT_MODE_STREAM, 0);
+ 		if ($decryptedString === false) {
+			throw new \Exception('PdfDecrypt Error');
+		}
 		return $decryptedString;
 	}
 	

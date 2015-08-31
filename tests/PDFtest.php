@@ -39,6 +39,8 @@ try {
 		$PDF->open('TestPDFs/encrypted.pdf');
 	else if ($_GET['page'] == 9)
 		$PDF->open('TestPDFs/encrypted_AES2.pdf');
+	else if ($_GET['page'] == 10)
+		$PDF->open('TestPDFs/encrypted3.pdf');
 	else
 		$PDF->open('TestPDFs/pdf_that_does_not_work.pdf');
 		
